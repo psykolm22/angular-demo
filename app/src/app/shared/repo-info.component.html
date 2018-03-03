@@ -1,0 +1,22 @@
+<p> {{ description | emojify }}</p>
+<p>
+  <app-info-label
+    label="Stars"
+    [value]="stargazersCount">
+  </app-info-label>
+  &nbsp;
+  <app-info-label
+    label="Issues"
+    [value]="openIssuesCount">
+  </app-info-label>
+  <span *ngIf="commentCount || commentCount === 0">
+        &nbsp;
+        <a [routerLink]="['/', org, repoName]" (mouseover)="prefetchComments(fullName)">
+        View comments ({{ commentCount }})
+        </a>
+      </span>
+  &nbsp;&nbsp;&nbsp;
+  Submitted <!--{{ createdAt | amTimeAgo }}-->
+  &nbsp;by&nbsp;
+  <a [href]="userUrl">{{ username }}</a>
+</p>
