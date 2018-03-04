@@ -1,11 +1,11 @@
-import {DocumentNode} from 'graphql';
+import { DocumentNode } from 'graphql';
 
 import gql from 'graphql-tag';
 
 export const fragments: {
   [key: string]: DocumentNode,
 } = {
-  entry: gql`
+    entry: gql`
     fragment RepoInfo on Entry {
       createdAt
       repository {
@@ -19,4 +19,4 @@ export const fragments: {
       }
     }
   `,
-};
+  };

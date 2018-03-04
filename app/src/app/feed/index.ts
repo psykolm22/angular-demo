@@ -1,8 +1,8 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {FeedComponent} from './feed.component';
-import {FeedEntryComponent} from './feed-entry.component';
-import {VoteButtonsComponent} from './vote-buttons.component';
+import { FeedComponent } from './feed.component';
+import { FeedEntryComponent } from './feed-entry.component';
+import { VoteButtonsComponent } from './vote-buttons.component';
 
 export const FEED_DECLARATIONS: any[] = [
   FeedComponent,
@@ -11,6 +11,6 @@ export const FEED_DECLARATIONS: any[] = [
 ];
 
 export const FEED_ROUTES: Routes = [
-  {path: '', redirectTo: '/feed/top', pathMatch: 'full'},
-  {path: 'feed/:type', component: FeedComponent}
+  { path: '', redirectTo: '/feed/top', pathMatch: 'full' },
+  { path: 'feed/:type', component: FeedComponent }
 ];

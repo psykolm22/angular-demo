@@ -40,7 +40,7 @@ type User @cacheControl(maxAge:240){
 `];
 
 export const resolvers = {
-  Repository: {
-    owner: property('owner'),
-  },
+    Repository: {
+        owner: property('owner'),
+    },
 };

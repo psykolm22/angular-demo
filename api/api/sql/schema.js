@@ -58,31 +58,31 @@ type Entry @cacheControl(maxAge:240) {
 `];
 
 export const resolvers = {
-  Entry: {
-    repository({ repository_name }, _, context) {
-      return context.Repositories.getByFullName(repository_name);
+    Entry: {
+        repository({ repository_name }, _, context) {
+            return context.Repositories.getByFullName(repository_name);
+        },
+        postedBy({ posted_by }, _, context) {
+            return context.Users.getByLogin(posted_by);
+        },
+        comments({ repository_name }, { limit = -1, offset = 0 }, context) {
+            return context.Comments.getCommentsByRepoName(repository_name, limit, offset);
+        },
+        createdAt: property('created_at'),
+        hotScore: property('hot_score'),
+        commentCount({ repository_name }, _, context) {
+            return context.Comments.getCommentCount(repository_name) || constant(0);
+        },
+        vote({ repository_name }, _, context) {
+            if (!context.user) return { vote_value: 0 };
+            return context.Entries.haveVotedForEntry(repository_name, context.user.login);
+        },
     },
-    postedBy({ posted_by }, _, context) {
-      return context.Users.getByLogin(posted_by);
-    },
-    comments({ repository_name }, { limit = -1, offset = 0 }, context) {
-      return context.Comments.getCommentsByRepoName(repository_name, limit, offset);
-    },
-    createdAt: property('created_at'),
-    hotScore: property('hot_score'),
-    commentCount({ repository_name }, _, context) {
-      return context.Comments.getCommentCount(repository_name) || constant(0);
-    },
-    vote({ repository_name }, _, context) {
-      if (!context.user) return { vote_value: 0 };
-      return context.Entries.haveVotedForEntry(repository_name, context.user.login);
-    },
-  },
 
-  Comment: {
-    createdAt: property('created_at'),
-    postedBy({ posted_by }, _, context) {
-      return context.Users.getByLogin(posted_by);
+    Comment: {
+        createdAt: property('created_at'),
+        postedBy({ posted_by }, _, context) {
+            return context.Users.getByLogin(posted_by);
+        },
     },
-  },
 };

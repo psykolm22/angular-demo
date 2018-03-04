@@ -1,7 +1,6 @@
 {
   "name": "angular-demo-api",
   "version": "1.0.0",
-  "description": "Example app for Apollo",
   "scripts": {
     "start": "babel-node api/index.js",
     "dev": "nodemon api/index.js --watch api --exec babel-node",
