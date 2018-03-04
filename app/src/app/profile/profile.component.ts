@@ -1,8 +1,8 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Apollo} from 'apollo-angular';
-import {Subscription} from 'rxjs/Subscription';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { Subscription } from 'rxjs/Subscription';
 
-import {CurrentUserQuery} from './profile.model';
+import { CurrentUserQuery } from './profile.model';
 
 @Component({
   selector: 'app-profile',
@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.currentUserSub = this.apollo.watchQuery({
       query: CurrentUserQuery,
-    }).valueChanges.subscribe(({data, loading}) => {
+    }).valueChanges.subscribe(({ data, loading }) => {
       this.currentUser = data['currentUser'];
       this.loading = loading;
     });

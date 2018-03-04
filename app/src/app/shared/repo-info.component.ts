@@ -1,8 +1,8 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {Apollo} from 'apollo-angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { Apollo } from 'apollo-angular';
 
-import {commentQuery} from '../comments/comments-page.model';
-import {COMMENTS_PER_QUERY} from '../comments/comments-page.component';
+import { commentQuery } from '../comments/comments-page.model';
+import { COMMENTS_PER_QUERY } from '../comments/comments-page.component';
 
 @Component({
   selector: 'app-repo-info',
@@ -37,7 +37,7 @@ export class RepoInfoComponent implements OnInit {
   public repoName: string;
   private prefetched = false;
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   public ngOnInit(): void {
     const parts: string[] = this.fullName.split('/');

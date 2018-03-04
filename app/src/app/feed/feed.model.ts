@@ -1,8 +1,8 @@
-import {DocumentNode} from 'graphql';
+import { DocumentNode } from 'graphql';
 
 import gql from 'graphql-tag';
 
-import {fragments} from './feed-entry.model';
+import { fragments } from './feed-entry.model';
 
 export const feedQuery: DocumentNode = gql`
   query Feed($type: FeedType!, $offset: Int, $limit: Int) {

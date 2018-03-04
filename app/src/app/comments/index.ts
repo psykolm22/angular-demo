@@ -1,8 +1,8 @@
-import {Routes} from '@angular/router';
+import { Routes } from '@angular/router';
 
-import {CommentComponent} from './comment.component';
-import {CommentsPageComponent} from './comments-page.component';
-import {Component} from '@angular/core';
+import { CommentComponent } from './comment.component';
+import { CommentsPageComponent } from './comments-page.component';
+import { Component } from '@angular/core';
 
 export const COMMENTS_DECLARATIONS: any[] = [
   CommentComponent,
@@ -10,5 +10,5 @@ export const COMMENTS_DECLARATIONS: any[] = [
 ];
 
 export const COMMENTS_ROUTES: Routes = [
-  {path: ':org/:repoName', component: CommentsPageComponent}
+  { path: ':org/:repoName', component: CommentsPageComponent }
 ];

@@ -1,6 +1,6 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {Entry, User} from '../../schema-types';
+import { Entry, User } from '../../schema-types';
 
 export interface OnVoteEvent {
   repoFullName: string;

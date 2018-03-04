@@ -1,11 +1,11 @@
-import {DocumentNode} from 'graphql';
+import { DocumentNode } from 'graphql';
 
 import gql from 'graphql-tag';
 
 export const fragments: {
   [key: string]: DocumentNode
 } = {
-  comment: gql`
+    comment: gql`
     fragment CommentsPageComment on Comment {
       id
       postedBy {
@@ -16,7 +16,7 @@ export const fragments: {
       content
     }
   `,
-};
+  };
 
 export const commentQuery: DocumentNode = gql`
   query Comment($repoFullName: String!, $limit: Int, $offset: Int) {

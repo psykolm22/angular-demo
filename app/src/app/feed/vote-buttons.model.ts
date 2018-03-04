@@ -1,11 +1,11 @@
-import {DocumentNode} from 'graphql';
+import { DocumentNode } from 'graphql';
 
 import gql from 'graphql-tag';
 
 export const fragments: {
   [key: string]: DocumentNode,
 } = {
-  entry: gql`
+    entry: gql`
     fragment VoteButtons on Entry {
       score
       vote {
@@ -13,4 +13,4 @@ export const fragments: {
       }
     }
   `,
-};
+  };
