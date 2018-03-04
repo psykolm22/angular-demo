@@ -1,14 +1,15 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "name": "angular-demo"
+        "name": "demo"
     },
     "apps": [{
         "root": "src",
         "outDir": "dist",
         "assets": [
             "assets",
-            "favicon.ico"
+            "favicon.ico",
+            "manifest.json"
         ],
         "index": "index.html",
         "main": "main.ts",
