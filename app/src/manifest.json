@@ -1,6 +1,6 @@
 {
-    "short_name": "demo",
-    "name": "demo",
+    "short_name": "angular-demo",
+    "name": "angular-demo",
     "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
