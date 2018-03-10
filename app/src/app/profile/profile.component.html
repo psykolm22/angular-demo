@@ -1,9 +1,0 @@
-<p *ngIf="loading" class="navbar-text navbar-right">
-  Loading...
-</p>
-<span *ngIf="!loading && currentUser">
-  <p class="navbar-text navbar-right">{{currentUser.login}}</p>
-</span>
-<p *ngIf="!loading && !currentUser" class="navbar-text navbar-right">
-  <a href="/login/github">Log in with GitHub</a>
-</p>
