@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
     HomeComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'angular2-demo' }),
+    BrowserModule.withServerTransition({ appId: 'angular-demo' }),
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule' },
