@@ -1,5 +1,5 @@
 import { createServer, proxy } from 'aws-serverless-express';
-import { app } from '../ssr/server';
+import { app } from '../server/server';
 
 const awsServerlessExpress = require('aws-serverless-express');
 const server = awsServerlessExpress.createServer(app);

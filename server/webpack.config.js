@@ -1,7 +1,7 @@
 const { join } = require('path');
 const { ContextReplacementPlugin } = require('webpack');
 
-const copyWebpackPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -16,13 +16,10 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
-        rules: [{
-            test: /\.ts$/,
-            loader: 'ts-loader'
-        }]
+        rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
     },
     plugins: [
-        new copyWebpackPlugin([{ from: "dist/browser/**/*" }, { from: "dist/server/**/*" }]),
+        new CopyWebpackPlugin([{ from: "dist/browser/**/*" }, { from: "dist/server/**/*" }]),
         // Temporary Fix for issue: https://github.com/angular/angular/issues/11580
         // for 'WARNING Critical dependency: the request of a dependency is an expression'
         new ContextReplacementPlugin(
