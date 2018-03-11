@@ -35,6 +35,7 @@ custom:
   webpack: ./lambda/webpack.config.js
   customDomain:
     domainName: ${env:DOMAIN_NAME}
+    basePath: ''
     stage: ${self:custom.stage}
     certificateName: ${env:CERTIFICATE_NAME}
     createRoute53Record: true

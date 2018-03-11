@@ -6,22 +6,22 @@ import { environment } from './environments/environment';
 
 if (environment.production) enableProdMode();
 
-// function registerServiceWorker(swName: string) {
-//   if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker
-//       .register(`/${environment.stage}/${swName}.js`)
-//       .then(reg => {
-//         console.log('Successful service worker registration', reg);
-//       })
-//       .catch(err =>
-//         console.error('Service worker registration failed', err)
-//       );
-//   } else {
-//     console.error('Service Worker API is not supported in current browser');
-//   }
-// }
+function registerServiceWorker(swName: string) {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register(`/${swName}.js`)
+      .then(reg => {
+        console.log('Successful service worker registration', reg);
+      })
+      .catch(err =>
+        console.error('Service worker registration failed', err)
+      );
+  } else {
+    console.error('Service Worker API is not supported in current browser');
+  }
+}
 
-// registerServiceWorker('service-worker')
+// 
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppModule, { preserveWhitespaces: false })
     .then(() => { })
