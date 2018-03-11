@@ -32,14 +32,19 @@ provider:
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
-  webpack: lambda/webpack.config.js
+  webpack: ./lambda/webpack.config.js
   customDomain:
     domainName: ${env:DOMAIN_NAME}
     stage: ${self:custom.stage}
-    basePath: ''
     certificateName: ${env:CERTIFICATE_NAME}
     createRoute53Record: true
     endpointType: 'regional'
+  # Webpack
+  bundle:
+    dev: dev
+    staging: prod
+    prod: prod
+  webpackIncludeModules: true
   # General
   awsAccount: ${env:AWS_ACCOUNT}
   awsAccountId: ${env:AWS_ACCOUNT_ID}

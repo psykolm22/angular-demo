@@ -19,19 +19,10 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
-        rules: [{
-            test: /\.ts$/,
-            loader: 'ts-loader'
-        }]
+        rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
     },
     plugins: [
-        new copyWebpackPlugin([{
-                from: "dist/browser/**/*"
-            },
-            {
-                from: "dist/server/**/*"
-            },
-        ]),
+        new copyWebpackPlugin([{ from: "dist/browser/**/*" }, { from: "dist/server/**/*" }]),
         new webpack.ContextReplacementPlugin(
             // fixes WARNING Critical dependency: the request of a dependency is an expression
             /(.+)?angular(\\|\/)core(.+)?/,
