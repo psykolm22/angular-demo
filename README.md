@@ -1,6 +1,7 @@
 # Development
 
 yarn install
+
 yarn run build:server && yarn run serve:server
 
 # Deploy staging serverless
