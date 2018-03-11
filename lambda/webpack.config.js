@@ -1,11 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const copyWebpackPlugin = require("copy-webpack-plugin");
 
-const slsw = require('serverless-webpack');
+const serverlessWebpack = require('serverless-webpack');
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-    entry: slsw.lib.entries,
+    entry: serverlessWebpack.lib.entries,
     target: 'node',
     resolve: {
         extensions: ['.ts', '.js']
@@ -22,7 +24,22 @@ module.exports = {
         rules: [{ test: /\.ts$/, loader: 'ts-loader' }]
     },
     plugins: [
-        new copyWebpackPlugin([{ from: "dist/browser/**/*" }, { from: "dist/server/**/*" }]),
+        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({ "process.env.NODE_ENV": JSON.stringify('production') }),
+        new CopyWebpackPlugin([
+            { from: require.resolve('workbox-sw'), to: 'workbox-sw.prod.js' },
+            { context: path.join(process.cwd(), "src"), from: { glob: "assets/**/*", dot: true } },
+            { context: path.join(process.cwd(), "src"), from: { glob: "favicon.ico", dot: true } },
+            { from: "dist/browser/**/*" },
+            { from: "dist/server/**/*" }
+        ]),
+        new WorkboxPlugin({
+            globDirectory: 'dist/',
+            globPatterns: ['**/*.{js,gz,png,svg,jpg,ico,html,json,map,ttf,woff,woff2}'],
+            globIgnores: ['**/service-worker.js'],
+            swSrc: 'src/service-worker.js',
+            swDest: 'dist/browser/service-worker.js'
+        }),
         new webpack.ContextReplacementPlugin(
             // fixes WARNING Critical dependency: the request of a dependency is an expression
             /(.+)?angular(\\|\/)core(.+)?/,
