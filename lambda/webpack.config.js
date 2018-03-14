@@ -1,19 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const serverlessWebpack = require('serverless-webpack');
-
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
-// { from: require.resolve('workbox-sw'), to: 'dist/browser/workbox-sw.prod.js' },
-// new WorkboxPlugin({
-//     globDirectory: 'dist/',
-//     globPatterns: ['**/*.{js,gz,png,svg,jpg,ico,html,json,map,ttf,woff,woff2}'],
-//     globIgnores: ['**/service-worker.js'],
-//     swSrc: 'src/service-worker.js',
-//     swDest: 'dist/browser/service-worker.js'
-// }),
+const serverlessWebpack = require('serverless-webpack');
 
 module.exports = {
     entry: serverlessWebpack.lib.entries,
@@ -42,6 +32,7 @@ module.exports = {
             { from: "dist/browser/**/*" },
             { from: "dist/server/**/*" }
         ]),
+        // https://github.com/angular/angular/issues/11580
         new webpack.ContextReplacementPlugin(
             // fixes WARNING Critical dependency: the request of a dependency is an expression
             /(.+)?angular(\\|\/)core(.+)?/,
