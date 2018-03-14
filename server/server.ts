@@ -1,5 +1,6 @@
 import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
+
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
@@ -9,16 +10,16 @@ import * as awsServerlessExpressMiddleware from 'aws-serverless-express/middlewa
 import { join } from 'path';
 import { enableProdMode } from '@angular/core';
 
-import { ngExpressEngine } from '@nguniversal/express-engine';
-
-// Import module map for lazy loading
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+enableProdMode();
+export const app = express();
 
 // * NOTE :: leave this as require() since this file is built Dynamically from webpack
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('../dist/server/main.bundle');
 
-enableProdMode();
-export const app = express();
+// Express Engine
+import { ngExpressEngine } from '@nguniversal/express-engine';
+// Import module map for lazy loading
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 
 // app.use(compression());
 // app.use(cors());
