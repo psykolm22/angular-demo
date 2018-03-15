@@ -2,10 +2,10 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 
 import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as cors from 'cors';
-import * as compression from 'compression';
-import * as awsServerlessExpressMiddleware from 'aws-serverless-express/middleware';
+// import * as bodyParser from 'body-parser';
+// import * as cors from 'cors';
+// import * as compression from 'compression';
+// import * as awsServerlessExpressMiddleware from 'aws-serverless-express/middleware';
 
 import { join } from 'path';
 import { enableProdMode } from '@angular/core';
